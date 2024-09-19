@@ -1,6 +1,29 @@
 'use strict'
 
-const path = require('node:path')
+const port = process.env.PORT || 3000;
+const host = ("RENDER" in process.env) ? `0.0.0.0` : `localhost`;
+const fastifyStatic = require('@fastify/static');
+
+const fastify = require('fastify')({
+  logger: true
+})
+
+fastify.register(fastifyStatic, {
+  root: `${process.cwd()}/frontend/build/`,
+});
+
+fastify.setNotFoundHandler((req, res) => {
+  res.sendFile('index.html');
+});
+
+fastify.listen({host: host, port: port }, function (err, address) {
+  if (err) {
+    fastify.log.error(err)
+    process.exit(1)
+  }
+})
+
+/*const path = require('node:path')
 const AutoLoad = require('@fastify/autoload')
 
 // Pass --options via CLI arguments in command to enable these options.
@@ -27,4 +50,4 @@ module.exports = async function (fastify, opts) {
   })
 }
 
-module.exports.options = options
+module.exports.options = options*/
