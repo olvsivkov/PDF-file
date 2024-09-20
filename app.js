@@ -1,6 +1,6 @@
 'use strict'
 
-/*const port = process.env.PORT || 4000;
+const port = process.env.PORT || 4000;
 const host = ("RENDER" in process.env) ? `0.0.0.0` : `localhost`;
 const fastifyStatic = require('@fastify/static');
 
@@ -21,9 +21,9 @@ fastify.listen({host: host, port: port }, function (err, address) {
     fastify.log.error(err)
     process.exit(1)
   }
-})*/
+})
 
-const path = require('path')
+/*const path = require('path')
 const AutoLoad = require('@fastify/autoload')
 const fastifyStatic = require('@fastify/static');
 const express = require('express')
@@ -65,4 +65,4 @@ module.exports = async function (fastify, opts) {
     dir: path.join(__dirname, 'routes'),
     options: Object.assign({}, opts)
   });
-}
+}*/
