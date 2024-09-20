@@ -1,6 +1,6 @@
 'use strict'
 
-const port = process.env.PORT || 3000;
+/*const port = process.env.PORT || 4000;
 const host = ("RENDER" in process.env) ? `0.0.0.0` : `localhost`;
 const fastifyStatic = require('@fastify/static');
 
@@ -9,7 +9,7 @@ const fastify = require('fastify')({
 })
 
 fastify.register(fastifyStatic, {
-  root: `${process.cwd()}/frontend/build/`,
+  root: `${process.cwd()}/pdf-generator/build/`,
 });
 
 fastify.setNotFoundHandler((req, res) => {
@@ -21,16 +21,22 @@ fastify.listen({host: host, port: port }, function (err, address) {
     fastify.log.error(err)
     process.exit(1)
   }
-})
+})*/
 
-/*const path = require('node:path')
+const path = require('path')
 const AutoLoad = require('@fastify/autoload')
-
-// Pass --options via CLI arguments in command to enable these options.
-const options = {}
+const fastifyStatic = require('@fastify/static');
 
 module.exports = async function (fastify, opts) {
   // Place here your custom code!
+
+  fastify.register(fastifyStatic, {
+    root: `${process.cwd()}/pdf-generator/build`,
+  });
+
+  fastify.setNotFoundHandler((req, res) => {
+    res.sendFile('index.html');
+  });
 
   // Do not touch the following lines
 
@@ -40,14 +46,12 @@ module.exports = async function (fastify, opts) {
   fastify.register(AutoLoad, {
     dir: path.join(__dirname, 'plugins'),
     options: Object.assign({}, opts)
-  })
+  });
 
   // This loads all plugins defined in routes
   // define your routes in one of these
   fastify.register(AutoLoad, {
     dir: path.join(__dirname, 'routes'),
     options: Object.assign({}, opts)
-  })
+  });
 }
-
-module.exports.options = options*/
