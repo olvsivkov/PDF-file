@@ -1,0 +1,121 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex; /* Используем flex для центрирования */
+    justify-content: center; /* Центрируем по горизонтали */
+    align-items: center; /* Центрируем по вертикали */
+    height: 100vh; /* Высота на весь экран */
+    margin: 0; /* Убираем отступы у body */
+}
+
+/* === стили для регионов === */
+
+.regions-wrapper {
+    display: grid; /* Используем grid для расположения блоков */
+    grid-template-columns: repeat(3, 1fr); /* Три колонки равной ширины */
+    gap: 10px; /* Отступы между блоками */
+    width: 75vw; /* Ширина обертки 75% от ширины экрана */
+    margin-top: 5%;
+}
+
+.region-item {
+    background-color: #7276db; /* Цвет фона блоков */
+    color: white; /* Цвет текста */
+    padding: 20px; /* Внутренние отступы */
+    text-align: center; /* Выравнивание текста по центру */
+    cursor: pointer;
+}
+
+.region-item:hover {
+    background-color: darkblue;
+}
+
+/*=== стили для формы ===*/
+
+.form-wrapper {
+
+    margin-top: 1%;
+}
+
+form {
+    background-color: #ffffff; /* Белый фон для формы */
+    border-radius: 10px; /* Закругленные углы */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Тень для глубины */
+    padding: 20px; /* Внутренние отступы */
+    /*width: 300px; /* Ширина формы */
+}
+
+label {
+    display: block; /* Блок для меток */
+    margin-bottom: 15px; /* Отступ между метками и полями ввода */
+    color: #333; /* Темный цвет текста меток */
+}
+
+input[type="text"] {
+    width: 75%; /* Ширина текстового поля на всю ширину формы */
+    padding: 10px; /* Внутренние отступы текстового поля */
+    border: 2px solid #007BFF; /* Синий бордер */
+    border-radius: 5px; /* Закругленные углы текстового поля */
+    outline: none; /* Убираем обводку при фокусе */
+    transition: border-color 0.3s ease; /* Плавный переход цвета бордера */
+    margin-left: 1%;
+
+}
+
+input[type="text"]:focus {
+    border-color: #0056b3; /* Темно-синий при фокусе */
+}
+
+input[type="checkbox"] {
+    margin-left: 10px; /* Отступ для чекбокса */
+}
+
+/* === кнопка создания pdf файла === */
+
+/* Стили для кнопки (если вы решите добавить) */
+button {
+    background-color: #007BFF; /* Синий фон кнопки */
+    color: white; /* Белый цвет текста кнопки */
+    border: none; /* Убираем бордер кнопки */
+    padding: 10px 15px; /* Внутренние отступы кнопки */
+    border-radius: 5px; /* Закругленные углы кнопки */
+    cursor: pointer; /* Указатель при наведении на кнопку */
+    margin-top: 1%;
+}
+
+button:hover {
+    background-color: #0056b3; /* Темно-синий при наведении на кнопку */
+}
+
+/* === cnbkb зва afqkf === */
+
+.pdf-container {
+    background-color: #f9f9f9; /* Светлый фон для контейнера */
+    border: 1px solid #ddd; /* Светло-серый бордер */
+    border-radius: 8px; /* Закругленные углы */
+    padding: 20px; /* Внутренние отступы */
+    width: 400px; /* Ширина контейнера */
+    margin: 20px auto; /* Центрируем контейнер */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Легкая тень */
+}
+
+.pdf-title {
+    color: #007BFF; /* Синий цвет заголовка */
+    margin-bottom: 10px; /* Отступ снизу заголовка */
+}
+
+.pdf-info {
+    color: #555; /* Темно-серый цвет для информации */
+    margin-bottom: 15px; /* Отступ снизу информации */
+}
+
+.pdf-name {
+    font-weight: bold; /* Жирный текст для ФИО */
+}
+
+.pdf-price {
+    color: #28a745; /* Зеленый цвет для цены */
+    font-weight: bold; /* Жирный текст для цены */
+}
