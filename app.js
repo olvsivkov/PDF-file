@@ -26,6 +26,17 @@ fastify.listen({host: host, port: port }, function (err, address) {
 const path = require('path')
 const AutoLoad = require('@fastify/autoload')
 const fastifyStatic = require('@fastify/static');
+const express = require('express')
+const app = express()
+const port = process.env.PORT || 4000;
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
 
 module.exports = async function (fastify, opts) {
   // Place here your custom code!
