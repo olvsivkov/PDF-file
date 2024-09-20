@@ -1,6 +1,8 @@
+import GetPDFfile from './components/myDocument'
+
 function App() {
   return (
-    <div className="App">
+    <div>
       <GetPDFfile/>
     </div>
   );
