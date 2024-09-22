@@ -1,28 +1,31 @@
 import React from 'react';
 import '../styles/styles.css'; // Подключаем CSS файл
 
-function InputForm({ setName, setIncludeName, includeName, name }) {
+function InputForm({state, handleChange, handleSubmit,generatePDF}) {
+
     return (
         <div className='form-wrapper'>
-            <form>
+            <form onSubmit={handleSubmit}>
                     <label htmlFor="name">ФИО клиента:
                       <input
                           type="text"
-                          id="name"
-                          value={name}
-                          onChange={(e) => setName(e.target.value)}
-                          required 
+                          name="inputClientName"
+                          value={state.inputClientName || ''} 
+                          onChange={handleChange}
                           placeholder='Костин Андрей Леонидович'
                       />
                     </label>
-                    <label htmlFor="include">ЭР
+                    <label htmlFor="">ЭР
                       <input
                           type="checkbox"
-                          id="include"
-                          checked={includeName}
-                          onChange={() => setIncludeName(!includeName)}
+                          name="ElectricRegistration_IsChecked"
+                          checked={state.ElectricRegistration_IsChecked}
+                          onChange={handleChange}
                       />
                     </label>
+                    <button type="submit">
+                      Generate PDF
+                    </button >
             </form>
         </div>
     );
@@ -30,32 +33,3 @@ function InputForm({ setName, setIncludeName, includeName, name }) {
 
 export default InputForm;
 
-/*import '../styles/styles.css'
-
-function InputForm({setName, setIncludeName, includeName, name}){
-
-    return (
-      <form>
-        <label>
-          Name:
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </label>
-        <br />
-        <label>
-          ЭР
-          <input
-            type="checkbox"
-            checked={includeName}
-            onChange={() => setIncludeName(!includeName)}
-          />
-        </label>
-        <br />
-      </form>
-    )
-}
-
-export default InputForm*/
