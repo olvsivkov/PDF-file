@@ -1,14 +1,20 @@
 import React, { useState, useEffect, useReducer } from 'react';
 import PDFfile from './pdfFile';
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
+//import html2canvas from 'html2canvas';
+//import jsPDF from 'jspdf';
 import InputForm from './inputForm';
 import GetRegions from './getRegion';
 import json from "../db/dataBase.json"
 import reducer from "../hooks/hooks" 
 import initialState from "../initialState/initialState"
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+import generatePDF from '../pdf/generatePDF'
 
 import '../styles/styles.css'
+
+pdfMake.vfs = pdfFonts.pdfMake.vfs; // Подключаем шрифты
+
 
 function GetPDFfile() {
 
@@ -39,35 +45,41 @@ function GetPDFfile() {
     e.preventDefault();
     setSubmittedData(state);
     console.log('Submitted Data:', state);
-    setTimeout(() => { generatePDF(); }, 1); // Не изменять!!! без setTimeout pdf генерируется без данных
+    setTimeout(() => { generatePDF({state, PDFfileInfo}); }, 1); // Не изменять!!! без setTimeout pdf генерируется без данных
   };
 
-  function generatePDF() { // генерация и скачивание пдф файла
-    const input = document.getElementById('pdf-content');
+  
 
-    html2canvas(input).then((canvas) => {
+  /*function generatePDF() {
+    const input = document.getElementById('pdf-content');
+  
+    html2canvas(input, {
+      scale: 2, // Увеличиваем масштаб в 2 раза для повышения четкости
+      useCORS: true, // Разрешаем кросс-доменные запросы для изображений
+      allowTaint: true, // Разрешаем использование поврежденных изображений
+    }).then((canvas) => {
       const imgData = canvas.toDataURL('image/png');
       const pdf = new jsPDF();
       const imgWidth = 190;
       const pageHeight = pdf.internal.pageSize.height;
       const imgHeight = (canvas.height * imgWidth) / canvas.width;
       let heightLeft = imgHeight;
-
+  
       let position = 0;
-
+  
       pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
       heightLeft -= pageHeight;
-
+  
       while (heightLeft >= 0) {
         position = heightLeft - imgHeight;
         pdf.addPage();
         pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
         heightLeft -= pageHeight;
       }
-
+  
       pdf.save('my-pdf.pdf');
     });
-  };
+  }
 
   /*
   <GetRegions/> - блок с регионами
@@ -87,7 +99,6 @@ function GetPDFfile() {
         handleChange={handleChange} 
         handleSubmit={handleSubmit} 
         dispatch={dispatch} 
-        generatePDF={generatePDF} 
         /> : false}
       <PDFfile 
         PDFfileInfo={PDFfileInfo} 

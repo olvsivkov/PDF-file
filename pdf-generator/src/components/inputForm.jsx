@@ -1,11 +1,12 @@
 import React from 'react';
 import '../styles/styles.css'; // Подключаем CSS файл
 
-function InputForm({state, handleChange, handleSubmit,generatePDF}) {
+function InputForm({state, handleChange, handleSubmit}) {
 
     return (
         <div className='form-wrapper'>
             <form onSubmit={handleSubmit}>
+
                     <label htmlFor="name">ФИО клиента:
                       <input
                           type="text"
@@ -15,6 +16,7 @@ function InputForm({state, handleChange, handleSubmit,generatePDF}) {
                           placeholder='Костин Андрей Леонидович'
                       />
                     </label>
+
                     <label htmlFor="">ЭР
                       <input
                           type="checkbox"
@@ -23,6 +25,25 @@ function InputForm({state, handleChange, handleSubmit,generatePDF}) {
                           onChange={handleChange}
                       />
                     </label>
+
+                    <label htmlFor="date">Дата:
+                      <input
+                        type="date"
+                        name="date"
+                        value={state.date || ''}
+                        onChange={handleChange}
+                      />
+                    </label>
+
+                    <label htmlFor="dateTime">Время:
+                      <input
+                        type="time"
+                        name="dateTime"
+                        value={state.dateTime || ''}
+                        onChange={handleChange}
+                      />
+                    </label>
+
                     <button type="submit">
                       Generate PDF
                     </button >

@@ -89,7 +89,7 @@ button:hover {
     background-color: #0056b3; /* Темно-синий при наведении на кнопку */
 }
 
-/* === cnbkb зва afqkf === */
+/* === стили для pdf файла === */
 
 .pdf-container {
     background-color: #f9f9f9; /* Светлый фон для контейнера */
@@ -99,11 +99,7 @@ button:hover {
     width: 400px; /* Ширина контейнера */
     margin: 20px auto; /* Центрируем контейнер */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Легкая тень */
-}
-
-.pdf-title {
-    color: #007BFF; /* Синий цвет заголовка */
-    margin-bottom: 10px; /* Отступ снизу заголовка */
+    font-size: 9px;
 }
 
 .pdf-info {
@@ -119,3 +115,29 @@ button:hover {
     color: #28a745; /* Зеленый цвет для цены */
     font-weight: bold; /* Жирный текст для цены */
 }
+
+.deal-record {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  
+  .deal-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .deal-table th,
+  .deal-table td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  .deal-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .deal-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
