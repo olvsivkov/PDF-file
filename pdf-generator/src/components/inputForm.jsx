@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/styles.css'; // Подключаем CSS файл
 
-function InputForm({state, handleChange, handleSubmit}) {
+function InputForm({state, handleChange, handleSubmit, handleOfficeChange, handleContactChange, offices}) {
 
     return (
         <div className='form-wrapper'>
@@ -16,6 +16,35 @@ function InputForm({state, handleChange, handleSubmit}) {
                           placeholder='Костин Андрей Леонидович'
                       />
                     </label>
+                    <div>
+                      <h3>Быберете офис:</h3>
+                      <select onChange={handleOfficeChange} value={state.selectedOffice ? state.selectedOffice.address : ''}>
+                        <option value="" disabled>
+                          Выберите офис
+                        </option>
+                        {offices.map((office, index) => (
+                          <option key={index} value={office.address}>
+                            {office.address}
+                         </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    {state.selectedOffice && (
+                      <div>
+                        <h3>Контакты сотрудников:</h3>
+                        <select onChange={handleContactChange} value={state.selectedContact || ''}>
+                          <option value="" disabled>
+                            Выберите контакт
+                          </option>
+                          {state.selectedOffice.contacts.map((contact, index) => (
+                            <option key={index} value={contact}>
+                              {contact}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    )}
 
                     <label htmlFor="">ЭР
                       <input

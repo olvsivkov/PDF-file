@@ -11,10 +11,8 @@ function generatePDF({state, PDFfileInfo}) {
             body: [
               ['Дата', state.date || ''],
               ['Время', state.dateTime || ''],
-              ['ЦИК', state.cik || ''],
-              ['Наименование', state.name || ''],
-              ['Ответственный сотрудник ЦИК', state.responsible || ''],
-              ['ФИО и контакты (почта и телефон)', `${state.name} (${state.email}, ${state.phone})` || '']
+              ['ЦИК', state.selectedOffice.address || ''],
+              ['Ответственный сотрудник ЦИК', state.selectedContact || ''],
             ]
           }
         },

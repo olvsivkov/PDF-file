@@ -10,8 +10,12 @@ const reducer = (state, action) => {
           ...state,
           [action.name]: !state[action.name], // Переключаем состояние чекбокса
         };
-      default:
-        return state;
+        case 'SELECT_OFFICE':
+      return { ...state, selectedOffice: action.payload, selectedContact: null };
+        case 'SELECT_CONTACT':
+      return { ...state, selectedContact: action.payload };
+        default:
+      return state;
     }
   };
 

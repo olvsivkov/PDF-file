@@ -5,7 +5,6 @@
 body {
     display: flex; /* Используем flex для центрирования */
     justify-content: center; /* Центрируем по горизонтали */
-    align-items: center; /* Центрируем по вертикали */
     height: 100vh; /* Высота на весь экран */
     margin: 0; /* Убираем отступы у body */
 }

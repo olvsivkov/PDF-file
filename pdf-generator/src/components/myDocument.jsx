@@ -25,29 +25,36 @@ function GetPDFfile() {
   const [dataBaseJSON, setDataBaseJSON] = useState(json) // передаем в GetRegions названия городов из dataBase.json
   const [chooseRegionIndex, setChooseRegionIndex] = useState(0) // по клику на регион передается индекс региона в базе данных dataBase.json
   const [PDFfileInfo, setPDFfileInfo] = useState(json.items[chooseRegionIndex].region) // передается информация из dataBase.json о регионе который выбрал пользователь
-
+  const offices = json.items[chooseRegionIndex].offices // массив объектов - офисы + контактные лица
+  
   useEffect(() => { setPDFfileInfo(json.items[chooseRegionIndex].region) }, [chooseRegionIndex]); // при клике на регионы передается изменившийся индекс региона и далее передается в <PDFfile/>
 
 
   // редюсер отслеживает события пользователя в форме <inputForm/> в функции handleChange
 
-  const handleChange = (e) => {
+  const handleChange = (e) => { // handleChange переключает чекбокс
     const { name, type, value } = e.target;
     if (type === 'checkbox') {
-      dispatch({ type: 'TOGGLE_CHECKBOX', name }); // Вызываем новое действие для чекбокса
+      dispatch({ type: 'TOGGLE_CHECKBOX', name }); // переключаем
     } else {
       dispatch({ type: 'SET_INPUT', name, value }); // Обычное действие для текстового поля
     }
   };
-
-  // handleSubmit сохраняет отправленные данные
-  const handleSubmit = (e) => {
+  
+  const handleOfficeChange = (event) => { // handleOfficeChange сохраняет выбранный офисс
+    const selectedOffice = offices.find(office => office.address === event.target.value);
+    dispatch({ type: 'SELECT_OFFICE', payload: selectedOffice });
+  };
+  
+  const handleContactChange = (event) => { // handleContactChange сохраняет выбранные контакты офисса
+    dispatch({ type: 'SELECT_CONTACT', payload: event.target.value });
+  };
+  
+  const handleSubmit = (e) => {   // handleSubmit сохраняет отправленные данные в state
     e.preventDefault();
     setSubmittedData(state);
-    console.log('Submitted Data:', state);
     setTimeout(() => { generatePDF({state, PDFfileInfo}); }, 1); // Не изменять!!! без setTimeout pdf генерируется без данных
   };
-
   
 
   /*function generatePDF() {
@@ -98,7 +105,10 @@ function GetPDFfile() {
         state={state} 
         handleChange={handleChange} 
         handleSubmit={handleSubmit} 
-        dispatch={dispatch} 
+        dispatch={dispatch}
+        handleOfficeChange={handleOfficeChange}
+        handleContactChange={handleContactChange} 
+        offices={offices}
         /> : false}
       <PDFfile 
         PDFfileInfo={PDFfileInfo} 

@@ -1,8 +1,7 @@
 const initialState = {
     dateTime: '',
     date: '',
-    cik: '',
-    name: '',
+    office: '',
     responsible: '',
     email: '',
     phone: '',
@@ -10,7 +9,9 @@ const initialState = {
     loanTerm: '',
     loanRate: '',
     ElectricRegistration_IsChecked: false,
-    inputClientName: ''
+    inputClientName: '',
+    selectedOffice: null,
+    selectedContact: null,
 };
 
 export default initialState
