@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useReducer } from 'react';
 import PDFfile from './pdfFile';
-//import html2canvas from 'html2canvas';
-//import jsPDF from 'jspdf';
 import InputForm from './inputForm';
 import GetRegions from './getRegion';
 import json from "../db/dataBase.json"
@@ -26,8 +24,10 @@ function GetPDFfile() {
   const [chooseRegionIndex, setChooseRegionIndex] = useState(0) // по клику на регион передается индекс региона в базе данных dataBase.json
   const [PDFfileInfo, setPDFfileInfo] = useState(json.items[chooseRegionIndex].region) // передается информация из dataBase.json о регионе который выбрал пользователь
   const offices = json.items[chooseRegionIndex].offices // массив объектов - офисы + контактные лица
+  let region = json.items[chooseRegionIndex].region
   
-  useEffect(() => { setPDFfileInfo(json.items[chooseRegionIndex].region) }, [chooseRegionIndex]); // при клике на регионы передается изменившийся индекс региона и далее передается в <PDFfile/>
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => { setPDFfileInfo(region) }, [chooseRegionIndex]); // при клике на регионы передается изменившийся индекс региона и далее передается в <PDFfile/>
 
 
   // редюсер отслеживает события пользователя в форме <inputForm/> в функции handleChange
@@ -55,38 +55,6 @@ function GetPDFfile() {
     setSubmittedData(state);
     setTimeout(() => { generatePDF({state, PDFfileInfo}); }, 1); // Не изменять!!! без setTimeout pdf генерируется без данных
   };
-  
-
-  /*function generatePDF() {
-    const input = document.getElementById('pdf-content');
-  
-    html2canvas(input, {
-      scale: 2, // Увеличиваем масштаб в 2 раза для повышения четкости
-      useCORS: true, // Разрешаем кросс-доменные запросы для изображений
-      allowTaint: true, // Разрешаем использование поврежденных изображений
-    }).then((canvas) => {
-      const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF();
-      const imgWidth = 190;
-      const pageHeight = pdf.internal.pageSize.height;
-      const imgHeight = (canvas.height * imgWidth) / canvas.width;
-      let heightLeft = imgHeight;
-  
-      let position = 0;
-  
-      pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
-      heightLeft -= pageHeight;
-  
-      while (heightLeft >= 0) {
-        position = heightLeft - imgHeight;
-        pdf.addPage();
-        pdf.addImage(imgData, 'PNG', 10, position, imgWidth, imgHeight);
-        heightLeft -= pageHeight;
-      }
-  
-      pdf.save('my-pdf.pdf');
-    });
-  }
 
   /*
   <GetRegions/> - блок с регионами

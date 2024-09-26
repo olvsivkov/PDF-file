@@ -17,7 +17,7 @@ function InputForm({state, handleChange, handleSubmit, handleOfficeChange, handl
                       />
                     </label>
                     <div>
-                      <h3>Быберете офис:</h3>
+                      <h3>Выберете офис:</h3>
                       <select onChange={handleOfficeChange} value={state.selectedOffice ? state.selectedOffice.address : ''}>
                         <option value="" disabled>
                           Выберите офис
