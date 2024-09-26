@@ -17,13 +17,21 @@ function generatePDF({state, PDFfileInfo}) {
           }
         },
         { text: 'Кредитный договор', style: 'subheader' },
-        { text: '№ __________ от «     » __________ 2024 г.', margin: [0, 0, 0, 20] },
+        { text: `№ ${state.creditAgreementNumber} от ${state.date} г.`, margin: [0, 0, 0, 20] },
         { text: 'Параметры кредита', style: 'subheader' },
         { text: `Кредит – ${state.loanAmount || '__'} руб., срок – ${state.loanTerm || '__'} мес., ставка - ${state.loanRate || '__'}% годовых.`, margin: [0, 0, 0, 20] },
-        { text: 'Реквизиты счета', style: 'subheader' },
-        { text: 'Необходимо уточнить в Центре ипотечного кредитования.' },
+        { text: 'Реквизиты счета необходимо уточнить в Центре ипотечного кредитования.' },
+
+        // Документы заемщика
+        { text: 'На сделке необходимо присутствовать заемщику и поручителю (при наличии поручителя) и предоставить:', style: 'subheader'},
+        { text: ' - Паспорт, снилс свидетельство о заключении брака, свидетельство о рождении несовершеннолетних детей;' },
+        ...(state.taxDeclarationData_IsChecked ? [{ text: ' - Справка о доходах и суммах налога физического лица' }] : []),
+        ...(state.workCertificateData_IsChecked ? [{ text: ' - Справка с места работы в произвольной форме;' }] : []),
+        ...(state.salaryTransactionStatement_IsChecked ? [{ text: ' - Выписка по банковскому счету (назначение платежа «зарплатные начисления»);' }] : []),
+        ...(state.pdfTaxStatement_IsChecked ? [{ text: ' - Выписка из СФР/ФНС в формате PDF;' }] : []),
+
         { text: `ФИО клиента: ${state.inputClientName}` },
-        // Условное добавление текста "ЭР 9600 р"
+        // Услуги
         ...(state.ElectricRegistration_IsChecked ? [{ text: 'ЭР 9600 р' }] : [])
       ],
       styles: {
