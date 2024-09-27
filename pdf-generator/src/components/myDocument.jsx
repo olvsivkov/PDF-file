@@ -25,6 +25,7 @@ function GetPDFfile() {
   const [PDFfileInfo, setPDFfileInfo] = useState(json.items[chooseRegionIndex].region) // передается информация из dataBase.json о регионе который выбрал пользователь
   const offices = json.items[chooseRegionIndex].offices // массив объектов - офисы + контактные лица
   let region = json.items[chooseRegionIndex].region
+  let documentNotarization = json.items[chooseRegionIndex].documentNotarization
   
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { setPDFfileInfo(region) }, [chooseRegionIndex]); // при клике на регионы передается изменившийся индекс региона и далее передается в <PDFfile/>
@@ -53,7 +54,7 @@ function GetPDFfile() {
   const handleSubmit = (e) => {   // handleSubmit сохраняет отправленные данные в state
     e.preventDefault();
     setSubmittedData(state);
-    setTimeout(() => { generatePDF({state, PDFfileInfo}); }, 1); // Не изменять!!! без setTimeout pdf генерируется без данных
+    setTimeout(() => { generatePDF({state, PDFfileInfo, documentNotarization}); }, 1); // Не изменять!!! без setTimeout pdf генерируется без данных
   };
 
   /*

@@ -1,6 +1,6 @@
 import pdfMake from 'pdfmake/build/pdfmake';
 
-function generatePDF({state, PDFfileInfo}) {
+function generatePDF({state, PDFfileInfo, documentNotarization}) {
     const docDefinition = {
       content: [
         { text: 'Запись на сделку', style: 'header' },
@@ -43,6 +43,13 @@ function generatePDF({state, PDFfileInfo}) {
         ...(state.notaryConsentSpouse ? [{ text: ' - если продавец состоял(а) в браке на момент покупки объекта недвижимости, то представить нотариальное согласие супруги (а) ;' }] : []),
         ...(state.marriageContract_IsChecked ? [{ text: ' - нотариально удостоверенный брачный договор или соглашение о разделе имущества, подтверждающий раздельный режим имущества супругов;' }] : []),
         ...(state.notaryTrustDocument_IsChecked ? [{ text: ' - нотариальную доверенность, если от имени продавца действует представитель;' }] : []),
+
+        { text: ``, margin: [10, 10, 10, 10] },
+
+        // Тождественность документов по ЭР
+        { text: 'Для электронной регистрации необходимо: сделать тождественность следующих документов у нотариуса (с бумажного документа  делают скан  и  нотариус заверяет его электронной подписью, файлы в формате pdf  и sig с подписью нотариуса  Вам направят на почту, которые необходимо направить  менеджеру Ипотечного центра до проведения сделки:'},
+        { text: `${documentNotarization}` },
+        
 
 
 
