@@ -132,6 +132,86 @@ function InputForm({state, handleChange, handleSubmit, handleOfficeChange, handl
                       />
                     </label>
 
+                    <label htmlFor="">нотариально удостоверенный брачный договор;
+                      <input
+                          type="checkbox"
+                          name="notarizedMarriageContract_IsChecked"
+                          checked={state.notarizedMarriageContract_IsChecked}
+                          onChange={handleChange}
+                      />
+                    </label>
+                    
+                    <label htmlFor="">нотариальное согласие супруги (а);
+                      <input
+                          type="checkbox"
+                          name="spouseNotaryConsent_IsChecked"
+                          checked={state.spouseNotaryConsent_IsChecked}
+                          onChange={handleChange}
+                      />
+                    </label>
+
+                    <label htmlFor="">Заявление заемщика в простой письменной форме о том, что он не состоит в браке на момент приобретения объекта недвижимости;
+                      <input
+                          type="checkbox"
+                          name="borrowerSingleDeclaration_IsChecked"
+                          checked={state.borrowerSingleDeclaration_IsChecked}
+                          onChange={handleChange}
+                      />
+                    </label>
+
+                    <label htmlFor="expertContingentConditions">Иные отлагательные условия:
+                      <input
+                          type="textarea"
+                          name="expertContingentConditions"
+                          value={state.expertContingentConditions || ''} 
+                          onChange={handleChange}
+                          placeholder='предоставить справку о закрытии кредита на сделку...'
+                      />
+                    </label>
+
+                    <h5>Отметь документы продаца на сделку:</h5>
+
+                    <label htmlFor="">заявление что продавец был не в браке на момент покупки;
+                      <input
+                          type="checkbox"
+                          name="maritalStatusDeclaration_IsChecked"
+                          checked={state.maritalStatusDeclaration_IsChecked}
+                          onChange={handleChange}
+                      />
+                    </label>
+
+                    <label htmlFor="">нотариальное согласие супруги;
+                      <input
+                          type="checkbox"
+                          name="notaryConsentSpouse_IsChecked"
+                          checked={state.notaryConsentSpouse_IsChecked}
+                          onChange={handleChange}
+                      />
+                    </label>
+
+                    <label htmlFor="">брачный договор или соглашение о разделе имущества продавца;
+                      <input
+                          type="checkbox"
+                          name="marriageContract_IsChecked"
+                          checked={state.marriageContract_IsChecked}
+                          onChange={handleChange}
+                      />
+                    </label>
+
+                    <label htmlFor="">нотариальная доверенность;
+                      <input
+                          type="checkbox"
+                          name="notaryTrustDocument_IsChecked"
+                          checked={state.notaryTrustDocument_IsChecked}
+                          onChange={handleChange}
+                      />
+                    </label>
+
+
+
+
+
+
                     <label htmlFor="">ЭР
                       <input
                           type="checkbox"
