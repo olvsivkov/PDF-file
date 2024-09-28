@@ -21,7 +21,6 @@ const initialState = {
     marriageContract_IsChecked: false,
     notaryTrustDocument_IsChecked: false,
     expertContingentConditions: '',
-    inputClientName: '',
     selectedOffice: null,
     selectedContact: null,
     creditAgreementNumber: '',

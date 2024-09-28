@@ -6,9 +6,9 @@ function InputForm({state, handleChange, handleSubmit, handleOfficeChange, handl
     return (
         <div className='form-wrapper'>
             <form onSubmit={handleSubmit}>
-                    <div>
+                    <div className='office-contacts'>
                       <h3>Выберете офис:</h3>
-                      <select onChange={handleOfficeChange} value={state.selectedOffice ? state.selectedOffice.address : ''}>
+                      <select onChange={handleOfficeChange} value={state.selectedOffice ? state.selectedOffice.address : ''}> 
                         <option value="" disabled>
                           Выберите офис
                         </option>
@@ -21,7 +21,7 @@ function InputForm({state, handleChange, handleSubmit, handleOfficeChange, handl
                     </div>
 
                     {state.selectedOffice && (
-                      <div>
+                      <div className='office-contacts'>
                         <h3>Контакты сотрудников:</h3>
                         <select onChange={handleContactChange} value={state.selectedContact || ''}>
                           <option value="" disabled>
@@ -53,16 +53,19 @@ function InputForm({state, handleChange, handleSubmit, handleOfficeChange, handl
                         onChange={handleChange}
                       />
                     </label>
-
-                    <label htmlFor="creditAgreementNumber">Номер кредитного договора:
-                      <input
-                          type="text"
-                          name="creditAgreementNumber"
-                          value={state.creditAgreementNumber || ''} 
-                          onChange={handleChange}
-                          placeholder='V7899654/789878'
-                      />
-                    </label>
+                    <div className="input-container">
+                      <p className='input-text'>Номер кредитного договора:</p>
+                      <label htmlFor="creditAgreementNumber" className="input-label-wrapper">
+                        <input
+                            type="text"
+                            name="creditAgreementNumber"
+                            value={state.creditAgreementNumber || ''} 
+                            onChange={handleChange}
+                            placeholder='V7899654/789878'
+                            className="input-label-inner"
+                        />
+                      </label>
+                    </div>
 
                     <label htmlFor="loanAmount">Сумма кредита:
                       <input
@@ -94,141 +97,128 @@ function InputForm({state, handleChange, handleSubmit, handleOfficeChange, handl
                       />
                     </label>
 
-                    <h5>Отметь документы заемщика на сделку:</h5>
+                    <h5>Услуги:</h5>
 
-                    <label htmlFor="">Справка о доходах и суммах налога физического лица
+                    <label htmlFor="">
+                      <input
+                          type="checkbox"
+                          name="ElectricRegistration_IsChecked"
+                          checked={state.ElectricRegistration_IsChecked}
+                          onChange={handleChange}
+                      /> - ЭР
+                    </label>
+
+                    <h5>Отметь дополнительные документы заемщика на сделку:</h5>
+
+                    <label htmlFor="">
                       <input
                           type="checkbox"
                           name="taxDeclarationData_IsChecked"
                           checked={state.taxDeclarationData_IsChecked}
                           onChange={handleChange}
-                      />
+                      /> - Справка о доходах и суммах налога физического лица
                     </label>
                     
-                    <label htmlFor="">Справка с места работы в произвольной форме;
+                    <label htmlFor="">
                       <input
                           type="checkbox"
                           name="workCertificateData_IsChecked"
                           checked={state.workCertificateData_IsChecked}
                           onChange={handleChange}
-                      />
+                      /> - Справка с места работы в произвольной форме;
                     </label>
                     
-                    <label htmlFor="">Выписка по банковскому счету (назначение платежа «зарплатные начисления»);
+                    <label htmlFor="">
                       <input
                           type="checkbox"
                           name="salaryTransactionStatement_IsChecked"
                           checked={state.salaryTransactionStatement_IsChecked}
                           onChange={handleChange}
-                      />
+                      /> - Выписка по банковскому счету (назначение платежа «зарплатные начисления»);
                     </label>
                     
-                    <label htmlFor="">Выписка из СФР/ФНС в формате PDF;
+                    <label htmlFor="">
                       <input
                           type="checkbox"
                           name="pdfTaxStatement_IsChecked"
                           checked={state.pdfTaxStatement_IsChecked}
                           onChange={handleChange}
-                      />
+                      /> - Выписка из СФР/ФНС в формате PDF;
                     </label>
 
-                    <label htmlFor="">нотариально удостоверенный брачный договор;
+                    <label htmlFor="">
                       <input
                           type="checkbox"
                           name="notarizedMarriageContract_IsChecked"
                           checked={state.notarizedMarriageContract_IsChecked}
                           onChange={handleChange}
-                      />
+                      /> - Нотариально удостоверенный брачный договор;
                     </label>
                     
-                    <label htmlFor="">нотариальное согласие супруги (а);
+                    <label htmlFor="">
                       <input
                           type="checkbox"
                           name="spouseNotaryConsent_IsChecked"
                           checked={state.spouseNotaryConsent_IsChecked}
                           onChange={handleChange}
-                      />
+                      /> - нотариальное согласие супруги (а);
                     </label>
 
-                    <label htmlFor="">Заявление заемщика в простой письменной форме о том, что он не состоит в браке на момент приобретения объекта недвижимости;
+                    <label htmlFor="">
                       <input
                           type="checkbox"
                           name="borrowerSingleDeclaration_IsChecked"
                           checked={state.borrowerSingleDeclaration_IsChecked}
                           onChange={handleChange}
-                      />
+                      /> - Заявление заемщика чо он не в браке на момент сделки;
                     </label>
 
-                    <label htmlFor="expertContingentConditions">Иные отлагательные условия:
+                    <label htmlFor="expertContingentConditions"> Иные отлагательные условия:
                       <input
                           type="textarea"
                           name="expertContingentConditions"
                           value={state.expertContingentConditions || ''} 
                           onChange={handleChange}
                           placeholder='предоставить справку о закрытии кредита на сделку...'
-                      />
+                      /> 
                     </label>
 
-                    <h5>Отметь документы продаца на сделку:</h5>
+                    <h5>Отметь дополнительные документы продаца на сделку:</h5>
 
-                    <label htmlFor="">заявление что продавец был не в браке на момент покупки;
+                    <label htmlFor="">
                       <input
                           type="checkbox"
                           name="maritalStatusDeclaration_IsChecked"
                           checked={state.maritalStatusDeclaration_IsChecked}
                           onChange={handleChange}
-                      />
+                      /> - заявление что продавец не был в браке на момент покупки;
                     </label>
 
-                    <label htmlFor="">нотариальное согласие супруги;
+                    <label htmlFor="">
                       <input
                           type="checkbox"
                           name="notaryConsentSpouse_IsChecked"
                           checked={state.notaryConsentSpouse_IsChecked}
                           onChange={handleChange}
-                      />
+                      /> - нотариальное согласие супруги;
                     </label>
 
-                    <label htmlFor="">брачный договор или соглашение о разделе имущества продавца;
+                    <label htmlFor="">
                       <input
                           type="checkbox"
                           name="marriageContract_IsChecked"
                           checked={state.marriageContract_IsChecked}
                           onChange={handleChange}
-                      />
+                      /> - брачный договор или соглашение о разделе имущества продавца;
                     </label>
 
-                    <label htmlFor="">нотариальная доверенность;
+                    <label htmlFor="">
                       <input
                           type="checkbox"
                           name="notaryTrustDocument_IsChecked"
                           checked={state.notaryTrustDocument_IsChecked}
                           onChange={handleChange}
-                      />
-                    </label>
-
-
-
-
-
-
-                    <label htmlFor="">ЭР
-                      <input
-                          type="checkbox"
-                          name="ElectricRegistration_IsChecked"
-                          checked={state.ElectricRegistration_IsChecked}
-                          onChange={handleChange}
-                      />
-                    </label>
-
-                    <label htmlFor="name">ФИО клиента:
-                      <input
-                          type="text"
-                          name="inputClientName"
-                          value={state.inputClientName || ''} 
-                          onChange={handleChange}
-                          placeholder='Костин Андрей Леонидович'
-                      />
+                      /> - нотариальная доверенность;
                     </label>
 
                     <button type="submit">

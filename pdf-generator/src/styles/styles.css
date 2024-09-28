@@ -7,6 +7,8 @@ body {
     justify-content: center; /* Центрируем по горизонтали */
     height: 100vh; /* Высота на весь экран */
     margin: 0; /* Убираем отступы у body */
+    background-color: #f6f8fa;
+    color: #24292e;
 }
 
 /* === стили для регионов === */
@@ -34,41 +36,49 @@ body {
 /*=== стили для формы ===*/
 
 .form-wrapper {
-
     margin-top: 1%;
 }
 
-form {
-    background-color: #ffffff; /* Белый фон для формы */
-    border-radius: 10px; /* Закругленные углы */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Тень для глубины */
-    padding: 20px; /* Внутренние отступы */
-    /*width: 300px; /* Ширина формы */
+.office-contacts {
+    margin-bottom: 2%;
+}
+
+select, input[type="text"], input[type="date"], input[type="time"] {
+    border: 1px solid #d1d5da;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 14px;
+    background-color: #fff;
+    transition: border-color 0.2s ease-in-out;
+}
+
+select:focus, input[type="text"]:focus, input[type="date"]:focus, input[type="time"]:focus {
+    border-color: #007bff;
+    outline: none;
 }
 
 label {
-    display: block; /* Блок для меток */
-    margin-bottom: 15px; /* Отступ между метками и полями ввода */
-    color: #333; /* Темный цвет текста меток */
-}
-
-input[type="text"] {
-    width: 75%; /* Ширина текстового поля на всю ширину формы */
-    padding: 10px; /* Внутренние отступы текстового поля */
-    border: 2px solid #007BFF; /* Синий бордер */
-    border-radius: 5px; /* Закругленные углы текстового поля */
-    outline: none; /* Убираем обводку при фокусе */
-    transition: border-color 0.3s ease; /* Плавный переход цвета бордера */
-    margin-left: 1%;
-
-}
-
-input[type="text"]:focus {
-    border-color: #0056b3; /* Темно-синий при фокусе */
+    display: block;
+    margin-bottom: 8px;
 }
 
 input[type="checkbox"] {
-    margin-left: 10px; /* Отступ для чекбокса */
+    margin-right: 5px;
+}
+
+.input-text {
+    font-weight: bold;
+}
+
+.input-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.input-label-wrapper {
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center items vertically */
+    height: 100%; /* Ensure label takes full height */
 }
 
 /* === кнопка создания pdf файла === */

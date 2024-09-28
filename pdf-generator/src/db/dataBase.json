@@ -12,7 +12,7 @@
       },
       {
         "region": "Калининград",
-        "documentNotarization": ["Доверенность"],
+        "documentNotarization": [" - Доверенность"],
         "offices": [
           {
             "address": "г. Калининград, пр-кт Ленинский, д. 28",
@@ -34,7 +34,7 @@
       },
       {
         "region": "Псков",
-        "documentNotarization": ["Доверенность"],
+        "documentNotarization": [" - Доверенность"],
         "offices": [
           {
             "address": "г. Псков, Советская ул, 40",
@@ -52,7 +52,7 @@
       },
       {
         "region": "Петрозаводск",
-        "documentNotarization": ["Доверенность"],
+        "documentNotarization": [" - Доверенность", "- Нотариальное согласие", " - Брачный договор"],
         "offices": [
           {
             "address": "г. Петрозаводск, ул.Андропова, дом 15",
@@ -78,7 +78,7 @@
       },
       {
         "region": "Архангельск",
-        "documentNotarization": ["Доверенность"],
+        "documentNotarization": [" - Доверенность", " - Брачный договор"],
         "offices": [
           {
             "address": "г. Архангельск, Набережная Северной Двины, 55",
@@ -112,7 +112,7 @@
       },
       {
         "region": "Мурманск",
-        "documentNotarization": ["Доверенность"],
+        "documentNotarization": [" - Доверенность"],
         "offices": [
           {
             "address": "г. Мурманск, пр.Кольский, д.22",
@@ -158,7 +158,7 @@
       },
       {
         "region": "Вологда",
-        "documentNotarization": ["Доверенность"],
+        "documentNotarization": [" - Доверенность"],
         "offices": [
           {
             "address": "г. Вологда, ул.Челюскинцев, д.9",
@@ -168,7 +168,7 @@
       },
       {
         "region": "Череповец",
-        "documentNotarization": ["Доверенность"],
+        "documentNotarization": [" - Доверенность", "- Нотариальное согласие", " - Брачный договор"],
         "offices": [
           {
             "address": "г. Череповец,  ул.Ленина, 56",
@@ -178,7 +178,7 @@
       },
       {
         "region": "Великий Новгород",
-        "documentNotarization": ["Доверенность"],
+        "documentNotarization": [" - Доверенность", " - Брачный договор", " - Нотариальное согласие"],
         "offices": [
           {
             "address": "г. Великий Новгород, ул.Ломоносова, 15",
@@ -192,7 +192,7 @@
       },
       {
         "region": "Сыктывкар",
-        "documentNotarization": ["Доверенность"],
+        "documentNotarization": [" - Доверенность", "- Нотариальное согласие", " - Брачный договор"],
         "offices": [
           {
             "address": "г. Сыктывкар, ул. Ленина д.47а",

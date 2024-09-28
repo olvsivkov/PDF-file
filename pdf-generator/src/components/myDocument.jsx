@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useReducer } from 'react';
-import PDFfile from './pdfFile';
+//import PDFfile from './pdfFile'; не удалять, будет нужен в <PDFfile/>
 import InputForm from './inputForm';
 import GetRegions from './getRegion';
 import json from "../db/dataBase.json"
@@ -17,7 +17,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs; // Подключаем шрифты
 function GetPDFfile() {
 
   const [state, dispatch] = useReducer(reducer, initialState); // создание и изменение состояния
-  const [submittedData, setSubmittedData] = useState(initialState); // Состояние для хранения введенных пользователем данных в <inputForm/>
+  //const [submittedData, setSubmittedData] = useState(initialState); // не удалять, будет нужен в <PDFfile/> Состояние для хранения введенных пользователем данных в <inputForm/>
   const [activeRegion, setActiveRegion] = useState(false) // Клик по региону после которого появляется форма
   // eslint-disable-next-line no-unused-vars
   const [dataBaseJSON, setDataBaseJSON] = useState(json) // передаем в GetRegions названия городов из dataBase.json
@@ -53,14 +53,16 @@ function GetPDFfile() {
   
   const handleSubmit = (e) => {   // handleSubmit сохраняет отправленные данные в state
     e.preventDefault();
-    setSubmittedData(state);
+    //setSubmittedData(state); // не удалять, будет нужен в <PDFfile/>
     setTimeout(() => { generatePDF({state, PDFfileInfo, documentNotarization}); }, 1); // Не изменять!!! без setTimeout pdf генерируется без данных
   };
 
   /*
-  <GetRegions/> - блок с регионами
-  <InputForm/>  - форма, которую заполняет пользователь, появляется только при клике на регион
-  <PDFfile/> - layout pdf-файла который скачивает пользователь
+  <div>
+    <GetRegions/> - блок с регионами
+    <InputForm/>  - форма, которую заполняет пользователь, появляется только при клике на регион
+    <PDFfile PDFfileInfo={PDFfileInfo} submittedData={submittedData} /> - TODO доработать чтоб пользователь видел предварительный pdf файл перед скачиванием
+  </div>
   */
 
   return (
@@ -79,10 +81,6 @@ function GetPDFfile() {
         handleContactChange={handleContactChange} 
         offices={offices}
         /> : false}
-      <PDFfile 
-        PDFfileInfo={PDFfileInfo} 
-        submittedData={submittedData}
-      />
     </div>
   );
 }
