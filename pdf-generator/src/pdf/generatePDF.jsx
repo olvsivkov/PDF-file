@@ -66,7 +66,7 @@ function generatePDF({state, documentNotarization}) {
         ...(state.notarizedMarriageContract_IsChecked ? [{ text: ' - нотариально удостоверенный брачный договор для заключение кредитного договора и приобретение объекта недвижимости, и передачу его в залог банку ВТБ;', style: 'normalText' }] : []),
         ...(state.spouseNotaryConsent_IsChecked ? [{ text: ' - нотариальное согласие супруги (а) для заключение кредитного договора и приобретение объекта недвижимости, и передачу его в залог банку ВТБ;', style: 'normalText' }] : []),
         ...(state.borrowerSingleDeclaration_IsChecked ? [{ text: ' - Заявление заемщика в простой письменной форме о том, что он не состоит в браке на момент приобретения объекта недвижимости;', style: 'normalText' }] : []),
-        ...(state.expertContingentConditions ? { text: `Иные отлагательные условия по решению или заключению эксперта: ${state.expertContingentConditions}`, margin: [0, 0, 0, 10], style: 'normalText' }: []),
+        { text: `Иные отлагательные условия по решению или заключению эксперта: ${(state.expertContingentConditions || "нет")}`, margin: [0, 0, 0, 10], style: 'normalText' },
         { text: ' - Первоначальный взнос необходимо разместить на счете заемщика в банке ВТБ или принести на сделку.', style: 'normalText' },
 
         // Документы продавца

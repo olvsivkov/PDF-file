@@ -66,6 +66,8 @@ function GetPDFfile() {
     setTimeout(() => { generatePDF({state, PDFfileInfo, documentNotarization}); }, 1); // Не изменять!!! без setTimeout pdf генерируется без данных
   };
 
+  console.log(state.expertContingentConditions)
+
   /*
   <div>
     <GetRegions/> - блок с регионами
