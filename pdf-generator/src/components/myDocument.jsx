@@ -37,12 +37,21 @@ function GetPDFfile() {
     const { name, type, value } = e.target;
     if (type === 'checkbox') {
       dispatch({ type: 'TOGGLE_CHECKBOX', name }); // переключаем
-    } else {
+    } else if (type === 'date') {
+      // Преобразуем дату из формата YYYY-MM-DD в дд:мм:гг
+      const date = new Date(value);
+      const dd = String(date.getDate()).padStart(2, '0'); // День
+      const mm = String(date.getMonth() + 1).padStart(2, '0'); // Месяц
+      const yyyy = String(date.getFullYear()).slice(-4); // Последние две цифры года
+
+      const formattedDate = `${dd}.${mm}.${yyyy} г.`; // Форматируем дату
+      dispatch({ type: 'SET_INPUT', name, value: formattedDate}); // Отправляем отформатированную дату
+  }  else {
       dispatch({ type: 'SET_INPUT', name, value }); // Обычное действие для текстового поля
     }
   };
   
-  const handleOfficeChange = (event) => { // handleOfficeChange сохраняет выбранный офисс
+  const handleOfficeChange = (event) => { // handleOfficeChange сохраняет выбранный офис
     const selectedOffice = offices.find(office => office.address === event.target.value);
     dispatch({ type: 'SELECT_OFFICE', payload: selectedOffice });
   };

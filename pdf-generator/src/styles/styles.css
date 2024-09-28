@@ -37,10 +37,15 @@ body {
 
 .form-wrapper {
     margin-top: 1%;
+    padding-bottom: 12%;
 }
 
 .office-contacts {
     margin-bottom: 2%;
+}
+
+.date-block {
+    margin-left: 5%;
 }
 
 select, input[type="text"], input[type="date"], input[type="time"] {
@@ -68,17 +73,45 @@ input[type="checkbox"] {
 
 .input-text {
     font-weight: bold;
+    margin: 0;
+    padding-top: 3%;
 }
 
 .input-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
 }
 
 .input-label-wrapper {
     display: flex; /* Use flexbox for alignment */
     align-items: center; /* Center items vertically */
     height: 100%; /* Ensure label takes full height */
+}
+
+.expert-contingent-textarea {
+    padding: 10px;
+    max-width: 100%;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+}
+
+.expert-contingent-textarea:focus {
+    border-color: #007bff; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+}
+
+.custom-checkbox {
+    display: flex; /* Используем flexbox для выравнивания */
+    align-items: center; /* Центрируем элементы по вертикали */
+    cursor: pointer; /* Изменяем курсор на pointer */
+}
+
+.custom-checkbox input[type="checkbox"] {
+    transform: scale(1.5); /* Увеличиваем размер чекбокса в 1.5 раза */
+    margin-right: 10px; /* Отступ между чекбоксом и текстом */
+    cursor: pointer; /* Изменяем курсор на pointer для чекбокса */
 }
 
 /* === кнопка создания pdf файла === */
