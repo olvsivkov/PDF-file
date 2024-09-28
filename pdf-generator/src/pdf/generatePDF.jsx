@@ -122,7 +122,7 @@ function generatePDF({state, documentNotarization}) {
       }
     };
 
-    pdfMake.createPdf(docDefinition).download('my-pdf.pdf');
+    pdfMake.createPdf(docDefinition).download('Уведомление об одобрении.pdf');
   }
 
   export default generatePDF
